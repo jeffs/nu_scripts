@@ -983,3 +983,56 @@ export extern "git" [
   --no-replace-objects                             # Do not use replacement refs to replace Git objects
   --bare                                           # Treat the repository as a bare repository
 ]
+
+
+# Copy of `export extern "git branch"` so that it works for my `br` alias.
+export extern "git br" [
+  branch?: string@"nu-complete git local branches"               # name of branch to operate on
+  --abbrev                                                       # use short commit hash prefixes
+  --edit-description                                             # open editor to edit branch description
+  --merged                                                       # list reachable branches
+  --no-merged                                                    # list unreachable branches
+  --set-upstream-to: string@"nu-complete git available upstream" # set upstream for branch
+  --unset-upstream                                               # remote upstream for branch
+  --all                                                          # list both remote and local branches
+  --copy                                                         # copy branch together with config and reflog
+  --format                                                       # specify format for listing branches
+  --move                                                         # rename branch
+  --points-at                                                    # list branches that point at an object
+  --show-current                                                 # print the name of the current branch
+  --verbose                                                      # show commit and upstream for each branch
+  --color                                                        # use color in output
+  --quiet                                                        # suppress messages except errors
+  --delete(-d)                                                   # delete branch
+  --list                                                         # list branches
+  --contains: string@"nu-complete git commits all"               # show only branches that contain the specified commit
+  --no-contains                                                  # show only branches that don't contain specified commit
+  --track(-t)                                                    # when creating a branch, set upstream
+]
+
+# Copy of `export extern "git checkout"` so that it works for my `co` alias.
+export extern "git co" [
+  ...targets: string@"nu-complete git checkout"   # name of the branch or files to checkout
+  --conflict: string                              # conflict style (merge or diff3)
+  --detach(-d)                                    # detach HEAD at named commit
+  --force(-f)                                     # force checkout (throw away local modifications)
+  --guess                                         # second guess 'git checkout <no-such-branch>' (default)
+  --ignore-other-worktrees                        # do not check if another worktree is holding the given ref
+  --ignore-skip-worktree-bits                     # do not limit pathspecs to sparse entries only
+  --merge(-m)                                     # perform a 3-way merge with the new branch
+  --orphan: string                                # new unparented branch
+  --ours(-2)                                      # checkout our version for unmerged files
+  --overlay                                       # use overlay mode (default)
+  --overwrite-ignore                              # update ignored files (default)
+  --patch(-p)                                     # select hunks interactively
+  --pathspec-from-file: string                    # read pathspec from file
+  --progress                                      # force progress reporting
+  --quiet(-q)                                     # suppress progress reporting
+  --recurse-submodules                            # control recursive updating of submodules
+  --theirs(-3)                                    # checkout their version for unmerged files
+  --track(-t)                                     # set upstream info for new branch
+  -b                                              # create and checkout a new branch
+  -B: string                                      # create/reset and checkout a branch
+  -l                                              # create reflog for new branch
+]
+
